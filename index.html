@@ -1,0 +1,210 @@
+DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuminaAI — Next-Gen English Learning</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
+  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap)" rel="stylesheet">
+  <link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)" />
+</head>
+<body>
+  <!-- Canvas background for animated floating particles -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Dynamic Background Glow Gradients -->
+  <div class="bg-glow blob-1"></div>
+  <div class="bg-glow blob-2"></div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar glass-panel">
+    <div class="logo">
+      <i class="fa-solid fa-brain-circuit neon-icon"></i>
+      <span>Lumina<span class="highlight">AI</span></span>
+    </div>
+    <nav class="nav-links">
+      <button class="nav-btn active" data-target="hero-section"><i class="fa-solid fa-house"></i> Home</button>
+      <button class="nav-btn" data-target="vocab-section"><i class="fa-solid fa-book-bookmark"></i> Vocab (100)</button>
+      <button class="nav-btn" data-target="quiz-section"><i class="fa-solid fa-lightbulb"></i> Quizzes (20)</button>
+      <button class="nav-btn" data-target="speaking-section"><i class="fa-solid fa-microphone-lines"></i> Speaking (10)</button>
+      <button class="nav-btn" data-target="grammar-section"><i class="fa-solid fa-wand-magic-sparkles"></i> Grammar (10)</button>
+    </nav>
+    <div class="api-key-container">
+      <button id="api-modal-btn" class="neon-btn btn-sm">
+        <i class="fa-solid fa-key"></i> <span id="api-status-text">Gemini API Key</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+
+    <!-- HERO SECTION -->
+    <section id="hero-section" class="app-section active">
+      <div class="hero-card glass-panel">
+        <div class="badge"><i class="fa-solid fa-sparkles"></i> AI-POWERED LANGUAGE ENGINE</div>
+        <h1 class="hero-title">Master English with <span class="gradient-text">Cinematic Precision</span></h1>
+        <p class="hero-subtitle">
+          Experience an immersive learning environment featuring 100 high-frequency vocabulary words, interactive quizzes, speech recognition exercises, and grammar modules—backed by Google Gemini.
+        </p>
+
+        <div class="hero-stats-grid">
+          <div class="stat-box glass-card">
+            <span class="stat-num">100</span>
+            <span class="stat-label">Core Vocab Words</span>
+          </div>
+          <div class="stat-box glass-card">
+            <span class="stat-num">20</span>
+            <span class="stat-label">Smart Quizzes</span>
+          </div>
+          <div class="stat-box glass-card">
+            <span class="stat-num">10</span>
+            <span class="stat-label">Voice Modules</span>
+          </div>
+          <div class="stat-box glass-card">
+            <span class="stat-num">10</span>
+            <span class="stat-label">Grammar Labs</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="neon-btn btn-lg start-btn" onclick="switchSection('vocab-section')">
+            <i class="fa-solid fa-rocket"></i> Launch Vocab Vault
+          </button>
+          <button class="glass-btn btn-lg" onclick="switchSection('quiz-section')">
+            <i class="fa-solid fa-gamepad"></i> Take Quiz Challenge
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VOCABULARY SECTION -->
+    <section id="vocab-section" class="app-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="fa-solid fa-book-open neon-icon"></i> Vocabulary Vault</h2>
+          <p>Explore 100 curated high-level vocabulary words with audio pronunciations, definitions, example sentences, and synonyms.</p>
+        </div>
+        <div class="vocab-controls">
+          <div class="search-box glass-input">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="vocab-search" placeholder="Search word, meaning, or synonym..." />
+          </div>
+          <button id="generate-ai-vocab-btn" class="neon-btn btn-sm">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Generate AI Word
+          </button>
+        </div>
+      </div>
+
+      <div class="vocab-grid" id="vocab-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- QUIZ SECTION -->
+    <section id="quiz-section" class="app-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="fa-solid fa-brain neon-icon"></i> Interactive Quizzes</h2>
+          <p>Test your retention across 20 adaptive multiple-choice questions.</p>
+        </div>
+        <div class="quiz-score-badge glass-card">
+          <span>Score: </span><strong id="quiz-score">0</strong> / <span id="quiz-total">20</span>
+        </div>
+      </div>
+
+      <div class="quiz-container glass-panel">
+        <div class="quiz-progress-bar">
+          <div id="quiz-progress-fill" class="progress-fill"></div>
+        </div>
+        
+        <div id="quiz-card-content">
+          <!-- Quiz card rendered by app.js -->
+        </div>
+
+        <div class="quiz-footer-nav">
+          <button id="prev-quiz-btn" class="glass-btn"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+          <span id="quiz-tracker-text">Question 1 of 20</span>
+          <button id="next-quiz-btn" class="neon-btn">Next <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPEAKING SECTION -->
+    <section id="speaking-section" class="app-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="fa-solid fa-microphone neon-icon"></i> Voice & Pronunciation Studio</h2>
+          <p>Read target sentences aloud. Our audio processor uses speech recognition to assess your pronunciation accuracy.</p>
+        </div>
+      </div>
+
+      <div class="speaking-layout">
+        <div class="speaking-sidebar glass-panel">
+          <h3>Exercises (10)</h3>
+          <ul id="speaking-list" class="exercise-menu-list">
+            <!-- Rendered by app.js -->
+          </ul>
+        </div>
+
+        <div class="speaking-main glass-panel">
+          <div id="speaking-display">
+            <!-- Active speaking exercise rendered by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRAMMAR SECTION -->
+    <section id="grammar-section" class="app-section">
+      <div class="section-header">
+        <div>
+          <h2><i class="fa-solid fa-shield-halved neon-icon"></i> Grammar Mastery Lab</h2>
+          <p>Master syntax, tense agreement, prepositions, and advanced sentence structure through 10 interactive challenges.</p>
+        </div>
+      </div>
+
+      <div class="grammar-layout">
+        <div class="grammar-sidebar glass-panel">
+          <h3>Modules (10)</h3>
+          <ul id="grammar-list" class="exercise-menu-list">
+            <!-- Rendered by app.js -->
+          </ul>
+        </div>
+
+        <div class="grammar-main glass-panel">
+          <div id="grammar-display">
+            <!-- Active grammar exercise rendered by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- API KEY MODAL -->
+  <div id="api-modal" class="modal-overlay">
+    <div class="modal-card glass-panel">
+      <button id="close-modal-btn" class="close-btn">&times;</button>
+      <h3><i class="fa-solid fa-key neon-icon"></i> Google Gemini API Settings</h3>
+      <p>Enter your Gemini API key to unlock dynamic content generation, instant live sentence analysis, and custom AI vocabulary expansion.</p>
+      
+      <div class="modal-input-group">
+        <label for="gemini-key-input">Gemini API Key</label>
+        <input type="password" id="gemini-key-input" class="glass-input-field" placeholder="AIzaSy..." />
+      </div>
+
+      <div class="modal-actions">
+        <button id="save-api-key-btn" class="neon-btn"><i class="fa-solid fa-floppy-disk"></i> Save Key</button>
+        <button id="clear-api-key-btn" class="glass-btn btn-danger">Clear Key</button>
+      </div>
+      <p class="small-text">Your API key is stored strictly in your browser's local storage and is never sent to external servers other than official Google API endpoints.</p>
+    </div>
+  </div>
+
+  <script src="ai.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
