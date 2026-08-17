@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumina AI - Daily Learning App</title>
+  <meta name="description" content="Daily English learning app with vocabulary, quizzes, speaking practice and AI-style search.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Lumina<span>AI</span></div>
+    <div class="search-wrap">
+      <input id="topSearch" type="search" placeholder="Ask anything about English..." aria-label="Search">
+      <button id="topAsk" class="primary small">Ask AI</button>
+    </div>
+    <nav>
+      <button class="nav-btn active" data-page="home">Home</button>
+      <button class="nav-btn" data-page="search">AI Search</button>
+      <button class="nav-btn" data-page="vocab">Vocab <b>100</b></button>
+      <button class="nav-btn" data-page="quiz">Quizzes <b>20</b></button>
+      <button class="nav-btn" data-page="speaking">Speaking <b>10</b></button>
+      <button class="nav-btn" data-page="grammar">Grammar <b>10</b></button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="pill">✦ LUMINA AI LEARNING ENGINE</div>
+        <h1>Ask. Learn. <span>Improve.</span></h1>
+        <p>Build your English every day with vocabulary, quizzes, speaking practice and grammar.</p>
+        <div class="stats">
+          <div><strong>100</strong><small>Core Vocab Words</small></div>
+          <div><strong>20</strong><small>Smart Quizzes</small></div>
+          <div><strong>10</strong><small>Voice Modules</small></div>
+          <div><strong>10</strong><small>Grammar Labs</small></div>
+        </div>
+        <div class="actions">
+          <button class="primary" data-page="vocab">Launch Vocab Vault</button>
+          <button class="secondary" data-page="quiz">Take Quiz Challenge</button>
+        </div>
+      </div>
+      <div class="quick-grid">
+        <button class="quick" data-query="Explain present tense">Explain present tense</button>
+        <button class="quick" data-query="What does resilient mean?">What does resilient mean?</button>
+        <button class="quick" data-query="How can I improve speaking?">How can I improve speaking?</button>
+        <button class="quick" data-query="Give me a vocabulary quiz">Give me a vocabulary quiz</button>
+      </div>
+    </section>
+
+    <section id="search" class="page">
+      <div class="search-hero">
+        <div class="pill">✦ LUMINA AI SEARCH</div>
+        <h2>Ask a learning question</h2>
+        <p>Search with normal English. Get an instant learning answer.</p>
+        <div class="big-search">
+          <input id="mainSearch" type="search" placeholder="Example: Explain present tense">
+          <button id="mainAsk" class="primary">Search</button>
+        </div>
+        <div class="chips">
+          <button class="chip" data-query="Explain present tense">Present tense</button>
+          <button class="chip" data-query="Explain past tense">Past tense</button>
+          <button class="chip" data-query="What does resilient mean?">Vocabulary</button>
+          <button class="chip" data-query="How can I improve speaking?">Speaking</button>
+        </div>
+      </div>
+      <div class="answer-card" id="answerCard">
+        <div class="answer-label">AI LEARNING ANSWER</div>
+        <h3 id="answerTitle">Ask your first question</h3>
+        <div id="answerBody"><p>Type a question above and press <b>Search</b>.</p></div>
+      </div>
+      <div class="recent">
+        <div class="section-head"><h3>Recent searches</h3><button id="clearRecent">Clear</button></div>
+        <div id="recentList"></div>
+      </div>
+    </section>
+
+    <section id="vocab" class="page">
+      <div class="section-title"><div class="pill">VOCABULARY</div><h2>Daily Vocabulary</h2><p>Learn useful English words with meaning and examples.</p></div>
+      <div class="vocab-card">
+        <div class="word-top"><span id="wordNo">1 / 100</span><span id="wordLevel">USEFUL WORD</span></div>
+        <h2 id="word">Resilient</h2><div id="pronunciation" class="pronunciation">/rɪˈzɪliənt/</div>
+        <p id="meaning">Able to recover quickly from difficulties.</p>
+        <div class="example"><b>Example:</b> <span id="example">She remained resilient after facing many challenges.</span></div>
+        <p><b>Synonyms:</b> <span id="synonyms">strong, adaptable, tough</span></p>
+        <div class="actions"><button id="prevWord" class="secondary">← Previous</button><button id="nextWord" class="primary">Next Word →</button></div>
+      </div>
+    </section>
+
+    <section id="quiz" class="page">
+      <div class="section-title"><div class="pill">QUIZ CHALLENGE</div><h2>Test Your English</h2><p>Choose the correct answer.</p></div>
+      <div class="quiz-card">
+        <div class="quiz-meta">Question <span id="quizNo">1</span> of 20</div>
+        <h3 id="quizQuestion"></h3>
+        <div id="quizOptions" class="options"></div>
+        <div id="quizFeedback" class="feedback"></div>
+        <button id="nextQuiz" class="primary" disabled>Next Question</button>
+      </div>
+    </section>
+
+    <section id="speaking" class="page">
+      <div class="section-title"><div class="pill">SPEAKING LAB</div><h2>Practice Speaking</h2><p>Read the sentence aloud and check your speech recognition.</p></div>
+      <div class="speaking-card">
+        <p class="label">READ THIS SENTENCE</p><h3 id="speakTarget">I practice English every day.</h3>
+        <button id="speakBtn" class="primary mic">🎙 Start Speaking</button>
+        <p id="speakResult">Your recognized speech will appear here.</p>
+        <div id="speakScore" class="score"></div>
+      </div>
+    </section>
+
+    <section id="grammar" class="page">
+      <div class="section-title"><div class="pill">GRAMMAR LAB</div><h2>Grammar Basics</h2><p>Simple explanations with examples.</p></div>
+      <div class="grammar-grid">
+        <article><h3>Present Simple</h3><p>Use it for habits, routines and facts.</p><p><b>Example:</b> I study English every day.</p></article>
+        <article><h3>Past Simple</h3><p>Use it for completed actions in the past.</p><p><b>Example:</b> I studied English yesterday.</p></article>
+        <article><h3>Future Simple</h3><p>Use it for actions that will happen later.</p><p><b>Example:</b> I will study English tomorrow.</p></article>
+        <article><h3>Present Continuous</h3><p>Use it for an action happening now.</p><p><b>Example:</b> I am studying English now.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer>LuminaAI • Daily Learning App</footer>
+  <script src="script.js"></script>
+</body>
+</html>
