@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LuminaAI Daily Learning App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><a class="logo" href="#" data-page="home">Lumina<span>AI</span></a>
+<nav>
+<button data-page="home" class="active">Home</button><button data-page="vocab">Vocab</button>
+<button data-page="quiz">Quizzes</button><button data-page="speak">Speaking</button><button data-page="grammar">Grammar</button>
+</nav><button id="api">Gemini API Key</button></header>
+<main>
+<section id="home" class="page active"><div class="hero">
+<small>AI-POWERED LANGUAGE ENGINE</small><h1>Master English with <em>Cinematic Precision</em></h1>
+<p>Learn vocabulary, test yourself, practice speaking and improve grammar every day.</p>
+<div class="stats"><b>100<small>Core Vocab Words</small></b><b>20<small>Smart Quizzes</small></b><b>10<small>Voice Modules</small></b><b>10<small>Grammar Labs</small></b></div>
+<button class="primary" data-page="vocab">Launch Vocab Vault</button> <button class="secondary" data-page="quiz">Take Quiz Challenge</button>
+</div><div class="cards">
+<article><b>📚</b><h3>Vocabulary</h3><p>Learn useful words with examples.</p><button data-page="vocab">Start →</button></article>
+<article><b>🧠</b><h3>Quiz</h3><p>Test your English knowledge.</p><button data-page="quiz">Start →</button></article>
+<article><b>🎙️</b><h3>Speaking</h3><p>Practice pronunciation and speaking.</p><button data-page="speak">Practice →</button></article>
+<article><b>✍️</b><h3>Grammar</h3><p>Learn common grammar rules.</p><button data-page="grammar">Learn →</button></article>
+</div></section>
+
+<section id="vocab" class="page"><div class="head"><div><small>VOCABULARY VAULT</small><h2>Build your word power</h2></div><button class="primary" id="newWord">New Word</button></div>
+<div class="panel"><span id="count">1 / 100</span><h1 id="word">Resilient</h1><p id="pron">/rɪˈzɪliənt/</p><h3 id="meaning">Able to recover quickly from difficulty or change.</h3><p><b>Example:</b> <span id="example">She remained resilient after facing several challenges.</span></p><div id="syn"></div></div></section>
+
+<section id="quiz" class="page"><div class="head"><div><small>SMART QUIZ</small><h2>Test your English</h2><p id="qnum"></p></div><strong>Score: <span id="score">0</span></strong></div>
+<div class="panel"><h2 id="question"></h2><div id="answers"></div><p id="feedback"></p><button class="primary" id="next" hidden>Next Question</button></div></section>
+
+<section id="speak" class="page"><div class="head"><div><small>SPEAKING LAB</small><h2>Practice speaking</h2></div></div>
+<div class="panel center"><p>TARGET SENTENCE</p><h2 id="target">I never give up when I face a difficult challenge.</h2><button class="secondary" id="listen">🔊 Listen</button>
+<textarea id="spoken" placeholder="Type what you said..."></textarea><button class="primary" id="check">Check My Attempt</button><p id="sresult"></p></div></section>
+
+<section id="grammar" class="page"><div class="head"><div><small>GRAMMAR LAB</small><h2>Learn grammar simply</h2></div></div>
+<div class="grammar"><article><h3>Present Simple</h3><p>Use it for habits and facts.</p><b>I study English every day.</b></article>
+<article><h3>Past Simple</h3><p>Use it for completed past actions.</p><b>I studied yesterday.</b></article>
+<article><h3>Future</h3><p>Use will for future decisions.</p><b>I will improve my English.</b></article>
+<article><h3>Present Continuous</h3><p>Use it for actions happening now.</p><b>I am learning English now.</b></article></div></section>
+</main>
+<div id="modal"><div><button id="close">×</button><h2>Gemini API Key</h2><p>Optional. For a public site, never publish a private API key in JavaScript.</p><input id="key" type="password" placeholder="Paste key"><button class="primary" id="save">Save on this device</button><p id="status"></p></div></div>
+<footer>LuminaAI • Learn something new every day.</footer>
+<script src="script.js"></script>
+</body></html>
