@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <title>ALVIN AI — Daily Learning</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"></div>
+
+  <div id="toast" class="toast"></div>
+
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="modal-close" id="closeSettings">×</button>
+      <div class="modal-title">
+        <div class="logo small">✦</div>
+        <div>
+          <h2>Gemini AI Settings</h2>
+          <p>Connect your own Gemini API key.</p>
+        </div>
+      </div>
+
+      <div class="warning">
+        <strong>Important:</strong> Do not paste a private or company API key into a public GitHub repository.
+        This static GitHub Pages version stores the key only in this browser's local storage. For a public app,
+        use a server-side secret instead.
+      </div>
+
+      <label for="apiKey">Gemini API key</label>
+      <div class="key-row">
+        <input id="apiKey" type="password" placeholder="Paste your Gemini API key">
+        <button class="icon-btn" id="toggleKey">Show</button>
+      </div>
+
+      <label for="modelSelect">Gemini model</label>
+      <select id="modelSelect">
+        <option value="gemini-3.7-flash">Gemini 3.7 Flash</option>
+        <option value="gemini-3.6-flash">Gemini 3.6 Flash</option>
+        <option value="gemini-3.5-flash">Gemini 3.5 Flash</option>
+      </select>
+
+      <label class="check-row">
+        <input id="webSearch" type="checkbox">
+        <span><strong>Google Search grounding</strong><small>Use current web information when supported by your API account.</small></span>
+      </label>
+
+      <div class="settings-actions">
+        <button class="btn ghost" id="removeKey">Remove key</button>
+        <button class="btn primary" id="saveSettings">Save & Test</button>
+      </div>
+      <p class="settings-status" id="settingsStatus"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
